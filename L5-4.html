@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L5-4 bool类型 & 带含义的数组1</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .red {
+            color: red;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>L5-4 bool类型 & 带含义的数组1</h1>
+
+    <h2>1. bool类型</h2>
+    <p>可以储存布尔值(true、false)</p>
+    <table>
+        <tr>
+            <th>布尔值</th>
+            <th>含义</th>
+            <th>数字表示</th>
+        </tr>
+        <tr>
+            <td>true</td>
+            <td>正确，条件成立</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>false</td>
+            <td>错误，条件不成立</td>
+            <td>0</td>
+        </tr>
+    </table>
+    <p class="red">注：把非0变量给bool会保存true</p>
+
+    <h2>2. 将条件存储在布尔值</h2>
+    <pre class="code">
+        <code>
+bool b = (3>2);
+if(b){
+    //条件成立执行
+}else{
+    //条件不成立执行
+}
+        </code>
+    </pre>
+
+    <h2>3. 使用布尔值记录状态</h2>
+    <p>例：记录n个数字是否全部大于或等于60</p>
+    <pre class="code">
+        <code>
+int n, x; //n记录数字的个数，x记录每次输入的数字
+cin >> n;
+bool flag = 1; //先假设全部满足
+for(int i = 1; i <= n; i++){
+    cin >> x;
+    if(x < 60){ //如果有<60的数字说明条件不成立
+        flag = 0; //条件不成立则设为false
+        break; //直接停止循环，减少运行时间和内存
+    }
+}
+if(flag){ //根据记录状态输出Yes或No
+    cout << "Yes";
+}else{
+    cout << "No";
+}
+        </code>
+    </pre>
+
+    <h2>4. 带含义的数组：桶标记</h2>
+    <p>用下标记录物品的编号，用下标对应数组的值记录物品的数量</p>
+    <pre class="code">
+        <code>
+#include &lt;iostream&gt;
+using namespace std;
+int num[15]; //初始化带含义的数组，通常多定义一些
+int main(){
+    int x;
+    for(int i = 1; i <= 10; i++){
+        cin >> x; //输入的编号是几，对应的下标的值就加1，表示编号几的数加一
+        num[x]++;
+    }
+    for(int i = 1; i <= 10; i++){
+        cout &lt;&lt; num[i] &lt;&lt; " ";
+    }
+    return 0;
+}
+        </code>
+    </pre>
+</body>
+</html>
